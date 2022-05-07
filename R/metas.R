@@ -31,12 +31,12 @@ metasAg <- function(a,b,c,d,e,f,g,h,i,j){
 
 #'@export
 metasAtendentes <- function(x){
-  metaTotal <-round(c(painelVista$Meta.Total[1]*metaDivisao$Porcentagem[metaDivisao$Caixa==x]/100,
-                      painelVista$Meta.Total[2]*metaDivisao$Porcentagem[metaDivisao$Caixa==x]/100,
-                      painelVista$Meta.Total[3]*metaDivisao$Porcentagem[metaDivisao$Caixa==x]/100,
-                      painelVista$Meta.Total[4]*metaDivisao$Porcentagem[metaDivisao$Caixa==x]/100,
-                      painelVista$Meta.Total[5]*metaDivisao$Porcentagem[metaDivisao$Caixa==x]/100,
-                      painelVista$Meta.Total[6]*metaDivisao$Porcentagem[metaDivisao$Caixa==x]/100),2)
+  metaTotal <-round(c(metasVista$Meta.Total[1]*metaDivisao$Porcentagem[metaDivisao$Caixa==x]/100,
+                      metasVista$Meta.Total[2]*metaDivisao$Porcentagem[metaDivisao$Caixa==x]/100,
+                      metasVista$Meta.Total[3]*metaDivisao$Porcentagem[metaDivisao$Caixa==x]/100,
+                      metasVista$Meta.Total[4]*metaDivisao$Porcentagem[metaDivisao$Caixa==x]/100,
+                      metasVista$Meta.Total[5]*metaDivisao$Porcentagem[metaDivisao$Caixa==x]/100,
+                      metasVista$Meta.Total[6]*metaDivisao$Porcentagem[metaDivisao$Caixa==x]/100),2)
   metaParcial <- case_when(x==01~
                              round(c((metaTotal[1]/diasEdg)*dia_atualEd,
                                      (metaTotal[2]/diasEdg)*dia_atualEd,
