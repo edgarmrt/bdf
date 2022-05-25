@@ -32,6 +32,7 @@ ler <- function(a,b,c,d,e,f,g,h){
   # Alterando o nome das colunas
   colnames(servicos)[c(1,2,3,6,7)] <-  c('CODIGO','NOME','DIA','CAIXA','CEP')
   colnames(prod01)[c(1,2,3,6)] <- c('CODIGO','NOME','DIA','PAG')
+  colnames(prod04)[c(1,2,3,6)] <- c('CODIGO','NOME','DIA','PAG')
   colnames(prod10)[c(1,2,3,6)] <- c('CODIGO','NOME','DIA','PAG')
   colnames(resgTele)[c(1,2,3,4,5)] <- c('CODIGO','NOME','DIA','CAIXA','QTD')
   colnames(adicionais)[c(1,2,3,4,5,6,7,8)] <- c('COD_SERV','NOME_SERV','COD_ADIC','NOME_ADIC','DIA','CAIXA','QTD','VALOR')
@@ -39,6 +40,7 @@ ler <- function(a,b,c,d,e,f,g,h){
   # Convertendo os campos DIA para tipo DATA
   servicos$DIA <- dmy(servicos$DIA)
   prod01$DIA <- dmy(prod01$DIA)
+  prod04$DIA <- dmy(prod04$DIA)
   prod10$DIA <- dmy(prod10$DIA)
   resgTele$DIA <- dmy(resgTele$DIA)
   adicionais$DIA <- dmy(adicionais$DIA)
@@ -46,5 +48,5 @@ ler <- function(a,b,c,d,e,f,g,h){
   servicos$CEP <- as.numeric(servicos$CEP)
   servicos[is.na(servicos)] <- 0
 
-  return(list(metas,comissao,servicos,prod01,prod10,resgTele,adicionais))
+  return(list(metas,comissao,servicos,prod01,prod04,prod10,resgTele,adicionais))
 }
