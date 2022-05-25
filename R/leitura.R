@@ -8,7 +8,7 @@
 #' serv(servicos.txt)
 #'
 #'@export
-ler <- function(a,b,c,d,e,f,g){
+ler <- function(a,b,c,d,e,f,g,h){
   ## Atribuindo primeira posição do vetor de leitura a variavel metas
   ## Utilizando sapply pra verificar quais variaveis são numericas e atribuindo o resultado a variavel is.num
   ## Utilizando lapply para arredondar os valores numericos para duas casas decimais
@@ -21,10 +21,12 @@ ler <- function(a,b,c,d,e,f,g){
   servicos <- read_csv2(c) %>% select('CÓDIGO SERVIÇO',NOME...5,'DATA MOV.',QTD,VALOR,'SUB CAIXA','CEP DEST.')
   prod01 <- read_csv2(d) %>% select('CÓDIGO PRODUTO',NOME...4,'DATA MOV.',VALOR,QTD,'TIPO PAG.') %>% mutate(CAIXA=1)
   prod01[is.na(prod01)] <- 0
-  prod10 <- read_csv2(e) %>% select('CÓDIGO PRODUTO',NOME...4,'DATA MOV.',VALOR,QTD,'TIPO PAG.') %>% mutate(CAIXA=10)
+  prod04 <- read_csv2(e) %>% select('CÓDIGO PRODUTO',NOME...4,'DATA MOV.',VALOR,QTD,'TIPO PAG.') %>% mutate(CAIXA=4)
+  prod04[is.na(prod04)] <- 0
+  prod10 <- read_csv2(f) %>% select('CÓDIGO PRODUTO',NOME...4,'DATA MOV.',VALOR,QTD,'TIPO PAG.') %>% mutate(CAIXA=10)
   prod10[is.na(prod10)] <- 0
-  resgTele <- read_csv2(f) %>% select('CODIGO PRODUTO',NOME...4,'DATA MOVIMENTO','NR.S.CAIXA','QTD RESG.',VALOR)
-  adicionais <- read_csv2(g) %>% select('CÓDIGO SERVIÇO',NOME...4,'CODIGO SERV. ADICIONAL',NOME...6,'DATA POSTAGEM','MAT. SUB_CAIXA',QUANTIDADE,'VLR SERVIÇO')
+  resgTele <- read_csv2(g) %>% select('CODIGO PRODUTO',NOME...4,'DATA MOVIMENTO','NR.S.CAIXA','QTD RESG.',VALOR)
+  adicionais <- read_csv2(h) %>% select('CÓDIGO SERVIÇO',NOME...4,'CODIGO SERV. ADICIONAL',NOME...6,'DATA POSTAGEM','MAT. SUB_CAIXA',QUANTIDADE,'VLR SERVIÇO')
   adicionais[is.na(adicionais)] <- 0
 
   # Alterando o nome das colunas
