@@ -37,27 +37,12 @@ metasAtendentes <- function(x){
                       metasVista$Meta.Total[4]*metaDivisao$Porcentagem[metaDivisao$Caixa==x]/100,
                       metasVista$Meta.Total[5]*metaDivisao$Porcentagem[metaDivisao$Caixa==x]/100,
                       metasVista$Meta.Total[6]*metaDivisao$Porcentagem[metaDivisao$Caixa==x]/100),2)
-  metaParcial <- case_when(x==01~
-                             round(c((metaTotal[1]/diasEdg)*dia_atualEd,
-                                     (metaTotal[2]/diasEdg)*dia_atualEd,
-                                     (metaTotal[3]/diasEdg)*dia_atualEd,
-                                     (metaTotal[4]/diasEdg)*dia_atualEd,
-                                     (metaTotal[5]/diasEdg)*dia_atualEd,
-                                     (metaTotal[6]/diasEdg)*dia_atualEd),2),
-                           x==04~
-                             round(c((metaTotal[1]/diasMax)*dia_atualMax,
-                                     (metaTotal[2]/diasMax)*dia_atualMax,
-                                     (metaTotal[3]/diasMax)*dia_atualMax,
-                                     (metaTotal[4]/diasMax)*dia_atualMax,
-                                     (metaTotal[5]/diasMax)*dia_atualMax,
-                                     (metaTotal[6]/diasMax)*dia_atualMax),2),
-                           x==10~
-                             round(c((metaTotal[1]/diasUteisMes)*dia_atual,
-                                     (metaTotal[2]/diasUteisMes)*dia_atual,
-                                     (metaTotal[3]/diasUteisMes)*dia_atual,
-                                     (metaTotal[4]/diasUteisMes)*dia_atual,
-                                     (metaTotal[5]/diasUteisMes)*dia_atual,
-                                     (metaTotal[6]/diasUteisMes)*dia_atual),2))
+  metaParcial <- round(c((metaTotal[1]/diasUteisMes)*dia_atual,
+                         (metaTotal[2]/diasUteisMes)*dia_atual,
+                         (metaTotal[3]/diasUteisMes)*dia_atual,
+                         (metaTotal[4]/diasUteisMes)*dia_atual,
+                         (metaTotal[5]/diasUteisMes)*dia_atual,
+                         (metaTotal[6]/diasUteisMes)*dia_atual),2)
 
   receita <-   round(c(conveniencia %>% filter(CAIXA==x) %>% {sum(.$VALOR)},
                        encomendas %>% filter(CAIXA==x) %>% {sum(.$VALOR)},
