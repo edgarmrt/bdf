@@ -37,12 +37,15 @@ metasAtendentes <- function(x){
                       metasVista$Meta.Total[4]*metaDivisao$Porcentagem[metaDivisao$Caixa==x]/100,
                       metasVista$Meta.Total[5]*metaDivisao$Porcentagem[metaDivisao$Caixa==x]/100,
                       metasVista$Meta.Total[6]*metaDivisao$Porcentagem[metaDivisao$Caixa==x]/100),2)
-  metaParcial <- round(c((metaTotal[1]/diasUteisMes)*dia_atual,
-                         (metaTotal[2]/diasUteisMes)*dia_atual,
-                         (metaTotal[3]/diasUteisMes)*dia_atual,
-                         (metaTotal[4]/diasUteisMes)*dia_atual,
-                         (metaTotal[5]/diasUteisMes)*dia_atual,
-                         (metaTotal[6]/diasUteisMes)*dia_atual),2)
+
+  dtIni <- encomendas %>% filter(CAIXA==x) %>% {min(.$DIA)}
+  dtMax <- encomendas %>% filter(CAIXA==x) %>% {max(.$DIA)}
+  metaParcial <- round(c((metaTotal[1]/metaDivisao$Dias[metaDivisao$Caixa==x])*bizdays(dtIni,dtMax, "Brazil/ANBIMA")+1,
+                         (metaTotal[2]/metaDivisao$Dias[metaDivisao$Caixa==x])*bizdays(dtIni,dtMax, "Brazil/ANBIMA")+1,
+                         (metaTotal[3]/metaDivisao$Dias[metaDivisao$Caixa==x])*bizdays(dtIni,dtMax, "Brazil/ANBIMA")+1,
+                         (metaTotal[4]/metaDivisao$Dias[metaDivisao$Caixa==x])*bizdays(dtIni,dtMax, "Brazil/ANBIMA")+1,
+                         (metaTotal[5]/metaDivisao$Dias[metaDivisao$Caixa==x])*bizdays(dtIni,dtMax, "Brazil/ANBIMA")+1,
+                         (metaTotal[6]/metaDivisao$Dias[metaDivisao$Caixa==x])*bizdays(dtIni,dtMax, "Brazil/ANBIMA")+1),2)
 
   receita <-   round(c(conveniencia %>% filter(CAIXA==x) %>% {sum(.$VALOR)},
                        encomendas %>% filter(CAIXA==x) %>% {sum(.$VALOR)},
