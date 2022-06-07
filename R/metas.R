@@ -31,6 +31,7 @@ metasAg <- function(a,b,c,d,e,f,g,h,i,j){
 
 #'@export
 metasAtendentes <- function(x){
+  segmento <- c('Conveniencia','Encomendas','Internacional','Marketing','Mensagens','Total')
   metaTotal <-round(c(metasVista$Meta.Total[1]*metaDivisao$Porcentagem[metaDivisao$Caixa==x]/100,
                       metasVista$Meta.Total[2]*metaDivisao$Porcentagem[metaDivisao$Caixa==x]/100,
                       metasVista$Meta.Total[3]*metaDivisao$Porcentagem[metaDivisao$Caixa==x]/100,
@@ -61,7 +62,7 @@ metasAtendentes <- function(x){
                   receita[3]/metaParcial[3]*100,receita[4]/metaParcial[4]*100,
                   receita[5]/metaParcial[5]*100,receita[6]/metaParcial[6]*100),2)
 
-  return(data.frame('Meta Total'=metaTotal, 'Meta Parcial'=metaParcial, 'Receita'=receita,
+  return(data.frame(Segmento=segmento,'Meta Total'=metaTotal, 'Meta Parcial'=metaParcial, 'Receita'=receita,
                     'Diferença'=dif, 'Porcent'=porc))
 }
 
